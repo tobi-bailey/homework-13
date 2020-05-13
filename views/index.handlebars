@@ -3,12 +3,32 @@
 
 
 
-<ul>
-  {{#each burgers}}{{this.id}}.{{this.burger_name}}<button class="devour" name="devour!" data-id="{{id}}" data-devour={{devoured}}>
-		{{!-- {{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}} --}}
-	devour</button></br>{{/each}}
+{{!-- <ul>
+  {{#each burgers}}{{this.id}}.{{this.burger_name}}<button class="devour" name="devour" data-id="{{id}}" data-devour={{devoured}}>Devour!</button></br>{{/each}}
 </li>
+</ul> --}}
+
+
+<h2>Burgers to Eat</h2>
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/unless}}
+  {{/each}}
 </ul>
+
+
+<h2>Devoured Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
 
 <h2>Add a Burger</h2>
 <form class="create-form">
