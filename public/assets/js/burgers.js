@@ -1,24 +1,24 @@
-// $(function() {
-//   $(".change-sleep").on("click", function(event) {
-//     var id = $(this).data("id");
-//     var newSleep = $(this).data("newsleep");
+$(function() {
+  $(".devour").on("click", function(event) {
+    var id = $(this).data("id");
+    var devouredIt = $(this).data("devour");
 
-//     var devourBurger = {
-//       devour: newSleep
-//     };
+    var devourBurger = {
+      devoured: devouredIt
+    };
 
-//     // Send the PUT request.
-//     $.ajax("/api/burgers/" + id, {
-//       type: "PUT",
-//       data: newSleepState
-//     }).then(
-//       function() {
-//         console.log("changed sleep to", newSleep);
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//     );
-//   });
+    // Send the PUT request.
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: devourBurger
+    }).then(
+      function() {
+        console.log("change burger to", devouredIt);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
   $(".create-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
@@ -26,7 +26,7 @@
 
     var newBurger = {
       name: $("#ca").val().trim(),
-      sleepy: $("[name=sleepy]:checked").val().trim()
+    //   sleepy: $("[name=]:checked").val().trim()
     };
 
     // Send the POST request.
@@ -41,7 +41,7 @@
       }
     );
   });
-
+});
 //   $(".delete-cat").on("click", function(event) {
 //     var id = $(this).data("id");
 

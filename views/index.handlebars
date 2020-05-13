@@ -4,7 +4,10 @@
 
 
 <ul>
-  {{#each burger}}{{/each}}
+  {{#each burgers}}{{this.id}}.{{this.burger_name}}<button class="devour" name="devour!" data-id="{{id}}" data-devour={{devoured}}>
+		{{!-- {{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}} --}}
+	devour</button></br>{{/each}}
+</li>
 </ul>
 
 <h2>Add a Burger</h2>
@@ -15,11 +18,6 @@
     <input type="text" id="ca" name="name">
   </div>
 
-  {{!-- <div class="form-group">
-    <label for="devour">Devour</label><br>
-    <input type="radio" name="devour" value="1" checked> Devoured!<br>
-    <input type="radio" name="devour" value="0"> Not Eaten
-  </div> --}}
 
   <button type="submit">Add Burger</button>
 </form>
