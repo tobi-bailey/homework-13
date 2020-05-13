@@ -2,11 +2,13 @@ var express = require("express");
 
 var router = express.Router();
 
-var burgers = require("../models/burgers.js");
+var burger                                                              = require("../models/burgers.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-    burgers.all(function(data) {
+      //   will execute line 9-16 on burgers controller
+    burger.all(function(data) {
+        // handlebars object
       var hbsObject = {
         burgers: data
       };
@@ -16,7 +18,7 @@ router.get("/", function(req, res) {
   });
   
   router.post("/api/burgers", function(req, res) {
-    cat.create([
+    burger.create([
       "burger_name", "devour"
     ], [
       req.body.burger_name, req.body.devour
@@ -43,18 +45,18 @@ router.get("/", function(req, res) {
     });
   });
   
-  router.select("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
+//   router.("/api/burgers/:id", function(req, res) {
+//     var condition = "id = " + req.params.id;
   
-    burgers.select(condition, function(result) {
-      if (result.affectedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      } else {
-        res.status(200).end();
-      }
-    });
-  });
+//     burgers.select(condition, function(result) {
+//       if (result.affectedRows == 0) {
+//         // If no rows were changed, then the ID must not exist, so 404
+//         return res.status(404).end();
+//       } else {
+//         res.status(200).end();
+//       }
+//     });
+//   });
   
   // Export routes for server.js to use.
   module.exports = router;
